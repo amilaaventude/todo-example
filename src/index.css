@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.todo {
+  cursor: pointer;
+  padding-left:20px;
+ 
+}
+.strike {
+  text-decoration: line-through;
+}
+
+.input {
+  text-align: center;
+  width: 150px;
+}
+
+.inputText {
+  width: 500px;
+   padding-left:50px; 
+  text-align: left;
+}
+
+#main {
+  display: flex;
+  position: relative;
+}
+
+.eye {
+  left: 0px;
+  top: auto;
+  position: absolute;
+}
+
+.eyeInside {
+  left: -20px;
+  position: relative;
+}
+
+.task{
+  width:250px;
+  word-wrap: break-word;
+  margin-top: 13px;
+}
+
+.button{
+  width: 50px;
+  margin-top: 13px;
+}
+
+.App {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actionInside{
+display: flex;
+margin-top: 13px;
+}
+
+.line {
+  float:inline;
+  margin-left:28px;
+  
+}
