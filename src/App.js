@@ -11,11 +11,11 @@ function App() {
   const [getLength, setLength] = useState('');
   const [filter, setFilterFlag] = useState(false);
   const [filterList, setFilterList] = useState('');
+  const [flagCheck, setflagCheckAll] = useState(false);
 
   useEffect(() => {
     setLength(filter ? filterList.length : toDoList.length)
   })
-
 
   const handleToggle = (id) => {
     let mapped = toDoList.map(task => {
@@ -27,7 +27,6 @@ function App() {
   const onRemove = (id) => {
     console.log(id)
     let mapped = toDoList.filter(item => item.id !== Number(id))
-    console.log(mapped)
     setToDoList(mapped);
   }
 
@@ -60,7 +59,9 @@ function App() {
   }
 
   const getClear = () => {
-    setToDoList('');
+    let mapped = toDoList.filter(item => item.complete !== true);
+    setToDoList(mapped);
+    setFilterList(mapped);
   }
 
   const getComplete = () => {
@@ -69,14 +70,23 @@ function App() {
     setFilterFlag(true);
   }
 
+  const handleCheck = () => {
+    if (flagCheck) {
+      setflagCheckAll(false);
+    } else {
+      setflagCheckAll(true);
+    }
+    console.log(flagCheck);
+  }
+
   return (
     <div className="App">
       <Header />
       <div id="main">
         <input value={userInput} type="text" onChange={handleChange} onKeyPress={handleKeyPress} placeholder="Enter task..." className="inputText" />
-        <input type="checkbox" id="eye" className="eye" />
+        <input type="checkbox" onClick={handleCheck} id="eye" className="eye" />
       </div>
-      <ToDoList toDoList={filter ? filterList : toDoList} handleToggle={handleToggle} onRemove={onRemove} />
+      <ToDoList toDoList={filter ? filterList : toDoList} handleToggle={handleToggle} onRemove={onRemove} handleCheck={flagCheck} />
       <ActionPanel handleAll={getAll} hanldeActive={getActive} hanldeClear={getClear} hanldeCompleted={getComplete} count={getLength} />
     </div>
   );

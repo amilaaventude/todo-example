@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const ToDo = ({ todo, handleToggle,onRemove }) => {
+const ToDo = ({ todo, handleToggle,onRemove,handleCheck }) => {
 
     const handleClick = (e) => {
         handleToggle(e.currentTarget.id)
@@ -21,7 +21,7 @@ const ToDo = ({ todo, handleToggle,onRemove }) => {
                         <div className="wrap">
                             <div className="task">
                             <div id={todo.id} key={todo.id + todo.task} name="todo" value={todo.id} onClick={handleClick} className={todo.complete ? "todo strike" : "todo"}>
-                                <input type="checkbox" id="eye" />
+                                <input type="checkbox" id="eye" defaultChecked={handleCheck} />
                                 {todo.task}
                             </div>
                             </div>
