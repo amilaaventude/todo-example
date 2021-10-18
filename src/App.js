@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     setLength(filter ? filterList.length : toDoList.length)
-  })
+  },[])
 
   const handleToggle = (id) => {
     let mapped = toDoList.map(task => {
@@ -53,7 +53,7 @@ function App() {
   }
 
   const getActive = () => {
-    let mapped = toDoList.filter(item => item.complete == false);
+    let mapped = toDoList.filter(item => item.complete === false);
     setFilterList(mapped);
     setFilterFlag(true);
   }
@@ -65,7 +65,7 @@ function App() {
   }
 
   const getComplete = () => {
-    let mapped = toDoList.filter(item => item.complete == true);
+    let mapped = toDoList.filter(item => item.complete === true);
     setFilterList(mapped);
     setFilterFlag(true);
   }
