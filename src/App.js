@@ -1,5 +1,5 @@
 import ToDoList from "./ToDoList";
-import React, { useState, useEffect } from 'react';
+import React, { useState,useCallback, useEffect } from 'react';
 import Data from "./mockData.json";
 import Header from "./Header";
 import ActionPanel from "./ActionPanel";
@@ -13,15 +13,15 @@ function App() {
   const [filterList, setFilterList] = useState('');
   const [flagCheck, setflagCheckAll] = useState(false);
 
-  const Length = () => {
+  const Length = useCallback(() => {
     setLength(filter ? filterList.length : toDoList.length)
-  }
+    },[filter,filterList.length,toDoList.length])
+   
+   useEffect(() => {
+    Length();
+   }, [Length]);
 
-  useEffect(() => {
-    Length()
-  },[Length])
 
- 
   const handleToggle = (id) => {
     let mapped = toDoList.map(task => {
       return task.id === Number(id) ? { ...task, complete: !task.complete } : { ...task };
