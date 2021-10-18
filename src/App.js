@@ -30,9 +30,13 @@ function App() {
   }
 
   const onRemove = (id) => {
-    console.log(id)
-    let mapped = toDoList.filter(item => item.id !== Number(id))
-    setToDoList(mapped);
+    let mappedStoered = toDoList.filter(item => item.id !== Number(id))
+    setToDoList(mappedStoered);
+    if(filter){
+      setFilterFlag(true);
+      let mappedStoered = filterList.filter(item => item.id !== Number(id))
+      setFilterList(mappedStoered);
+    }
   }
 
   const handleChange = (e) => {
