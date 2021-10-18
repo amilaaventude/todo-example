@@ -13,10 +13,15 @@ function App() {
   const [filterList, setFilterList] = useState('');
   const [flagCheck, setflagCheckAll] = useState(false);
 
-  useEffect(() => {
+  const Length = () => {
     setLength(filter ? filterList.length : toDoList.length)
-  },[])
+  }
 
+  useEffect(() => {
+    Length()
+  },[Length])
+
+ 
   const handleToggle = (id) => {
     let mapped = toDoList.map(task => {
       return task.id === Number(id) ? { ...task, complete: !task.complete } : { ...task };
